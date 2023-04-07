@@ -11,13 +11,13 @@ public class Main extends Application {
 	 @Override
 	    public void start(Stage primaryStage) throws Exception{
 	        Parent root = FXMLLoader.load(getClass().getResource("fxml/Home.fxml"));
-	        primaryStage.setTitle("KeepToo SMSys");
-	        primaryStage.getIcons().add(new Image("/home/icons/icon.png"));
+	        primaryStage.setTitle("Household Management");
+	        //primaryStage.getIcons().add(new Image("/home/icons/icon.png"));
 	        primaryStage.setScene(new Scene(root));
 	        primaryStage.show();
 	    }
 
-	    //you can download the glyph browser - link provided.
+	    
 	    public static void main(String[] args) {
 	        launch(args);
 	    }
