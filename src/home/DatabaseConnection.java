@@ -1,9 +1,8 @@
-package home.model;
-import java.sql.DriverManager;
+package home;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
-
-public class JDBCConnection {
+public class DatabaseConnection {
 	public static Connection Connect(){
         try {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
@@ -14,4 +13,5 @@ public class JDBCConnection {
 	        
 	        
 	    }   
+
 }
