@@ -8,54 +8,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fed8a2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.SplitBillCreateGroups">
-   <left>
-      <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="105.0" layoutY="14.0" text="Split Bill" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Black" size="18.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="97.0" fitWidth="57.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Downloads/Split%20Bill.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="23.0" layoutY="107.0" text="Your Groups">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="21.0" layoutY="145.0" text="TechTribe">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="21.0" layoutY="187.0" text="WeFour">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="21.0" layoutY="238.0" text="GoaTrip">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button defaultButton="true" layoutX="136.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#viewGroup" text="View Group" />
-            <Button defaultButton="true" layoutX="136.0" layoutY="187.0" mnemonicParsing="false" text="View Group" />
-            <Button defaultButton="true" layoutX="136.0" layoutY="233.0" mnemonicParsing="false" text="View Group" />
-         </children>
-      </AnchorPane>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="705.0" style="-fx-background-color: #fed8a2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.SplitBillCreateGroups">
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="411.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="116.0" layoutY="244.0" prefHeight="17.0" prefWidth="93.0" />
-            <TextField fx:id="groupName" layoutX="165.0" layoutY="99.0" onMouseClicked="#addName" prefHeight="26.0" prefWidth="139.0" promptText="Add a name" />
+            <TextField fx:id="groupName" layoutX="165.0" layoutY="99.0" prefHeight="26.0" prefWidth="139.0" promptText="Add a name" />
             <Label layoutX="124.0" layoutY="66.0" text="Create a Group">
                <font>
                   <Font name="Arial Bold" size="14.0" />
@@ -86,4 +48,26 @@
          </children>
       </AnchorPane>
    </right>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="97.0" fitWidth="57.0" layoutX="12.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/Split%20Bill.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="82.0" layoutY="17.0" text="Split Bill" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <VBox fx:id="groupListVbox" layoutX="20.0" layoutY="124.0" prefHeight="262.0" prefWidth="267.0" />
+            <Label layoutX="18.0" layoutY="98.0" text="Groups">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>
