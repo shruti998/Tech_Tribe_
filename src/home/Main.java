@@ -24,14 +24,10 @@ public class Main extends Application {
 	    public void start(Stage primaryStage) throws Exception{
 		 	stage = primaryStage;
 		 	primaryStage.setResizable(false);
-
 	        Parent root = FXMLLoader.load(getClass().getResource("fxml/Chore.fxml"));
-		 	//Parent root = FXMLLoader.load(getClass().getResource("fxml/CreateHomeGroup.fxml"));
-		 	//Parent root = FXMLLoader.load(getClass().getResource("fxml/CreateHomeGroup.fxml"));
-
 	        primaryStage.setTitle("Household Management");
 	        //primaryStage.getIcons().add(new Image("/home/icons/icon.png"));
-	        primaryStage.setScene(new Scene(root, 700, 400));
+	        primaryStage.setScene(new Scene(root, 670, 600));
 	        primaryStage.show();
 	    }
 	 
