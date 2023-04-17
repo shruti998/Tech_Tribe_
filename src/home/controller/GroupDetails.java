@@ -111,19 +111,6 @@ public class GroupDetails {
 
 				balances.put(payerName, memberBalance);
 			}
-
-			for (Map.Entry<String, List<Map<String, Double>>> e : balances.entrySet()) {
-				System.out.println("Balances for " + e.getKey());
-				System.out.println("Owes list");
-				for (Map.Entry<String, Double> e1 : e.getValue().get(0).entrySet()) {
-					System.out.println(e1.getKey() + " : " + e1.getValue());
-				}
-				System.out.println("Gets back list");
-				for (Map.Entry<String, Double> e1 : e.getValue().get(1).entrySet()) {
-					System.out.println(e1.getKey() + " : " + e1.getValue());
-				}
-			}
-
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -182,7 +169,6 @@ public class GroupDetails {
 
 	@FXML
 	void renderTransactionNames() {
-		System.out.println("Adding element to " + transactionListView.getItems());
 		for (String name : transactions) {
 			transactionListView.getItems().add(name);
 		}

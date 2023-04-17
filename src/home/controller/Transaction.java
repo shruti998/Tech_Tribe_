@@ -295,7 +295,6 @@ public class Transaction {
 			amountField.textProperty().addListener(new ChangeListener<String>() {
 				@Override
 				public void changed(ObservableValue<? extends String> arg0, String oldValue, String newValue) {
-					System.out.println("Trying to change amount for " + e.getKey());
 					if (newValue.length() > 0)
 						e.getValue().amount = Double.parseDouble(newValue);
 					else
@@ -426,11 +425,38 @@ public class Transaction {
 			}
 		}
 
+		if (transactionName == null || transactionName.trim().length() == 0) {
+			// Error, there must be a transaction name.
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Something's missing!");
+			alert.setHeaderText("Please specify a transaction name!");
+			alert.showAndWait();
+			return;
+		}
+
+		if (paidBy == null || paidBy.trim().length() == 0) {
+			// Error, there must be a payer.
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Something's missing!");
+			alert.setHeaderText("Please specify who's paying!");
+			alert.showAndWait();
+			return;
+		}
+
 		if (splitAmount != this.amount) {
 			// Error, amount in split should add up to total amount.
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("It doesn't add up!");
 			alert.setHeaderText("The amount in split does not add up to the total amount of the transaction!");
+			alert.showAndWait();
+			return;
+		}
+
+		if (this.amount == 0) {
+			// Error, amount in split should add up to total amount.
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("No money moved");
+			alert.setHeaderText("The amount cannot be 0!");
 			alert.showAndWait();
 			return;
 		}
