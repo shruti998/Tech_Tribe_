@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class SplitBillCreateGroups {
 
     @FXML
@@ -33,6 +34,7 @@ public class SplitBillCreateGroups {
     	listOfNames.getItems().add(name.getText());
     }
 
+    
     @FXML
     void removeName(MouseEvent event) {
     	int selectedID = listOfNames.getSelectionModel().getSelectedIndex();
