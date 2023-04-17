@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
+
 public class ForgotPassword {
 	@FXML
     private TextField emailField;
@@ -28,7 +29,9 @@ public class ForgotPassword {
         } else {
             showAlert(AlertType.ERROR, "Update Failed", "Failed to update the password.");
         }
+        
     }
+    
 
     private void showAlert(AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);

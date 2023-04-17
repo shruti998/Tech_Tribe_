@@ -4,11 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fed8a2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="57.0" prefHeight="17.0" prefWidth="220.0" text="Welcome" />
-      <Button layoutX="152.0" layoutY="125.0" mnemonicParsing="false" text="View Group" />
-      <Button layoutX="324.0" layoutY="125.0" mnemonicParsing="false" text="Search Group" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="45.0" prefHeight="17.0" prefWidth="220.0" text="Welcome" />
+      <Button layoutX="20.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: black;" text="Groups" textFill="WHITE" />
+      <Button layoutX="161.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: black;" text="Chores" textFill="WHITE" />
+      <Button layoutX="294.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: black;" text="Bill" textFill="WHITE" />
+      <Button layoutX="434.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: black;" text="Maintenance" textFill="WHITE" />
+      <Button layoutX="215.0" layoutY="290.0" mnemonicParsing="false" text="Notificationton" />
    </children>
 </AnchorPane>
