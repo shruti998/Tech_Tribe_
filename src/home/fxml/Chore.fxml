@@ -39,5 +39,6 @@
          </children>
       </HBox>
       <Button fx:id="btnAdd" layoutX="29.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#addChore" style="-fx-background-color: black;" text="Add" textFill="#fffefe" />
+      <Button fx:id="btnBack" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>

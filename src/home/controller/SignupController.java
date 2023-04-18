@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -46,6 +47,9 @@ public class SignupController {
 	
 	@FXML
 	private Label lblError;
+	
+	@FXML
+    private Hyperlink linkLogin;
 	
 	
 	
@@ -115,7 +119,7 @@ public class SignupController {
 	private boolean signUpValidation() {
 		//boolean validation = true;
 		
-		if (txtFName.getText().isEmpty() || txtLName.getText().isEmpty() || txtUName.getText().isEmpty() || txtEmail.getText().isEmpty() || txtPass.getText().isEmpty() || txtConfirmPass.getText().isEmpty() || cbUserType == null) {
+		if (txtFName.getText().isEmpty() || txtLName.getText().isEmpty() || txtUName.getText().isEmpty() || txtEmail.getText().isEmpty() || txtPass.getText().isEmpty() || txtConfirmPass.getText().isEmpty() || cbUserType.getValue() == null) {
             lblError.setTextFill(Color.RED);
             lblError.setText("Please fill in all fields.");
             //validation = false;
@@ -159,5 +163,15 @@ public class SignupController {
 
         alert.showAndWait();
     }
+	
+	
+	public void logIn() throws IOException {
+        
+        
+        Main m = new Main();
+        
+        m.changeScene("fxml/SignIn.fxml");
+		
+	}
 
 }

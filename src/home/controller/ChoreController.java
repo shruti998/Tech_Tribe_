@@ -17,6 +17,8 @@ import home.Main;
 import home.model.Chores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -73,7 +75,7 @@ public class ChoreController {
 	@FXML
 	private ChoiceBox<String> myChoiceBox;
 
-    private String  username = "shruti";
+    private String  username;
     @FXML
     ArrayList<String >  listOfNames = new ArrayList<String>();
     ArrayList<String > userNames = new ArrayList<String>();
@@ -81,7 +83,8 @@ public class ChoreController {
     String how[]= {"daily","monthly","weekly","high"};
     String houseID;
     @FXML
-    void initialize() {
+    void initialize(String username) {
+    	this.username = username;
     	getMembersName();
     	myChoiceBox.getItems().addAll(userNames);
     	System.out.println(userNames.size());
@@ -107,7 +110,7 @@ public class ChoreController {
    {
 	   int hid=0;
 	   try (Connection connection = DatabaseConnection.Connect()){
-	        String userQuery = "SELECT homeid FROM userTable WHERE fName =? ";
+	        String userQuery = "SELECT homeId FROM userTable WHERE uName =? ";
 	        PreparedStatement groupStatement = connection.prepareStatement(userQuery);
 	        groupStatement.setString(1, username);
 	
@@ -129,7 +132,7 @@ public class ChoreController {
  void getMembersName() {
     	
 		try (Connection connection = DatabaseConnection.Connect()){
-	        String userQuery = "SELECT  fname FROM userTable WHERE homeid = (SELECT homeid FROM userTable WHERE fName = ?) ";
+	        String userQuery = "SELECT  uName FROM userTable WHERE homeId = (SELECT homeId FROM userTable WHERE uName = ?) ";
 	        PreparedStatement groupStatement = connection.prepareStatement(userQuery);
 	        groupStatement.setString(1, username);
 	        //groupStatement.setString(2, username);
@@ -196,6 +199,23 @@ public class ChoreController {
 	    	}
 		
     }
+    
+    public void goBack() throws IOException {
+		
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Chore.fxml"));
+        Parent root = loader.load();
+        
+        ViewChoreController viewChoreController = loader.getController();
+        viewChoreController.initialize(username);
+        
+        
+        Main m = new Main();
+        
+        m.changeStage(root);
+    	
+		
+	}
     
     
     

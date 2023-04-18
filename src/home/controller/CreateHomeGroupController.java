@@ -30,7 +30,7 @@ import home.Main;
 public class CreateHomeGroupController {
 	private List<String> groupNames;
 	// to be deleted
-	private String  username = "Ranbir";
+	private String  username;
 
     @FXML
     private TextField groupName;
@@ -50,21 +50,32 @@ public class CreateHomeGroupController {
     @FXML
     private TextArea address;
     
+    @FXML
+    private Button btnBack;
+    
+    
+    
+    
+    
     
     @FXML
-    void initialize() {
+    void initialize(String username) {
+    	this.username = username;
     	getMembersName();
     	myChoiceBox.getItems().addAll(userNames);
     	System.out.println(userNames.size());
     	myChoiceBox.setOnAction(this::getUser);
+    	
+    	
     }
 
     void getMembersName() {
     	
 		try (Connection connection = DatabaseConnection.Connect()){
-	        String userQuery = "SELECT DISTINCT fName FROM userTable WHERE homeid IS NULL AND fName <> ?";
+	        String userQuery = "SELECT DISTINCT uName FROM userTable WHERE homeid IS NULL AND uName <> ? and userType = ?";
 	        PreparedStatement groupStatement = connection.prepareStatement(userQuery);
 	        groupStatement.setString(1, username);
+	        groupStatement.setString(2, "Member");
 	        ResultSet rs = groupStatement.executeQuery();
 	        while(rs.next()) {
 	        	this.userNames.add(rs.getString(1));
@@ -97,30 +108,13 @@ public void getUser(ActionEvent event) {
     }
   
     @FXML
-    void viewGroup(MouseEvent event) {         
-         System.out.println("View Group Clicked!");
-         Node node = (Node) event.getSource();
-         Stage stage = (Stage) node.getScene().getWindow();
-         stage.close();
-         try {
-        	 URL url = new File("fxml/ShowAllHomeGroup.fxml").toURI().toURL();
-        	 FXMLLoader loader = new FXMLLoader(url);
-        	 Parent root = loader.load();
-        	 Scene scene = new Scene(root);
-        	 stage.setScene(scene);
-        	 stage.show();
-         } catch (IOException e) {
-        	 System.err.println(String.format("Error: %s", e.getMessage()));
-         }
-    }@FXML
     void saveData(MouseEvent event) throws IOException {
     	System.out.println("Save Data Invoked!");
 		try (Connection connection = DatabaseConnection.Connect()){
 			for (String memberName : listOfNames.getItems()) {
-		        String memberQuery = "INSERT INTO AllHomeGroups (homeName,address, groupMember) VALUES (?, ?,?)";
+		        String memberQuery = "INSERT INTO AllHomeGroups (homeName,address) VALUES (?, ?)";
 		        PreparedStatement memberStatement = connection.prepareStatement(memberQuery);
 		        memberStatement.setString(1, groupName.getText());
-		        memberStatement.setString(3, memberName);
 		        memberStatement.setString(2, address.getText());
 		        memberStatement.executeUpdate();
 		    }
@@ -132,7 +126,7 @@ public void getUser(ActionEvent event) {
 	        int houseId = rs.getInt(1);
 
 	        // Update userTable with the newly created houseId
-	        String userQuery = "UPDATE userTable SET homeid = ? WHERE fName = ?";
+	        String userQuery = "UPDATE userTable SET homeid = ? WHERE uName = ?";
 	        PreparedStatement userStatement = connection.prepareStatement(userQuery);
 
 	        for (String memberName : listOfNames.getItems()) {
@@ -168,5 +162,25 @@ public void getUser(ActionEvent event) {
 		    System.out.println(e.getMessage());
 		}
     }
+    
+    public void goBack() throws IOException {
+		
+		String uName = username;
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Dashboard.fxml"));
+        Parent root = loader.load();
+        
+        DashboardController dashboardController = loader.getController();
+        dashboardController.displayInfo(uName);
+        
+        
+        Main m = new Main();
+        
+        m.changeStage(root);
+    	
+//    	Main m = new Main();
+//        
+//        m.changeScene("fxml/Dashboard.fxml");
+		
+	}
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -32,26 +33,32 @@
                </font>
             </Label>
             <Label layoutX="127.0" layoutY="74.0" text="_______________________" />
-            <Label layoutX="29.0" layoutY="180.0" text="User Name">
+            <Label layoutX="29.0" layoutY="140.0" text="User Type">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="272.0" text="Password">
+            <Label layoutX="29.0" layoutY="211.0" text="User Name">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUName" layoutX="177.0" layoutY="180.0" prefHeight="26.0" prefWidth="182.0" promptText="User Name" />
-            <PasswordField fx:id="txtPass" layoutX="177.0" layoutY="272.0" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
-            <Label fx:id="txtError" layoutX="38.0" layoutY="329.0" prefHeight="17.0" prefWidth="323.0" />
-            <Button fx:id="btnLogin" layoutX="142.0" layoutY="370.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: #111111;" text="Login" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="34.0" layoutY="291.0" text="Password">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUName" layoutX="177.0" layoutY="210.0" prefHeight="26.0" prefWidth="182.0" promptText="User Name" />
+            <PasswordField fx:id="txtPass" layoutX="175.0" layoutY="289.0" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
+            <Label fx:id="txtError" layoutX="38.0" layoutY="354.0" prefHeight="17.0" prefWidth="323.0" />
+            <Button fx:id="btnLogin" layoutX="144.0" layoutY="407.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: #111111;" text="Login" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Button>
-            <Hyperlink fx:id="linkCreateAcc" layoutX="58.0" layoutY="442.0" onAction="#createAccount" text="Create Account" textFill="#030303" />
-            <Hyperlink fx:id="linkForgotPass" layoutX="228.0" layoutY="442.0" onAction="#forgotPassword" text="Forgot Password" textFill="#030303" />
+            <Hyperlink fx:id="linkCreateAcc" layoutX="59.0" layoutY="480.0" onAction="#createAccount" text="Create Account" textFill="#030303" />
+            <Hyperlink fx:id="linkForgotPass" layoutX="243.0" layoutY="480.0" onAction="#forgotPassword" text="Forgot Password" textFill="#030303" />
+            <ComboBox fx:id="cbUserTypeLogin" layoutX="177.0" layoutY="139.0" prefHeight="26.0" prefWidth="175.0" />
          </children>
       </AnchorPane>
    </right>
