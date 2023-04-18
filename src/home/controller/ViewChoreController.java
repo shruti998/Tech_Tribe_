@@ -6,12 +6,16 @@ import home.model.Chores;
 import home.model.ViewChore;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 @SuppressWarnings("deprecation")
 public class ViewChoreController {
@@ -61,7 +65,11 @@ public class ViewChoreController {
 	    private Button btnRefresh;
 	    @FXML
 	    private Button btndel;
-	    private String  username = "shruti";
+	    
+	    @FXML
+	    private Button btnBack;
+	    
+	    private String  username;
 
 	    
 	    ObservableList<Chores> queryList;
@@ -72,14 +80,22 @@ public class ViewChoreController {
 	    @FXML
 	    void editData(MouseEvent event) throws IOException {
 	    	
-		    selChore= userTable.getSelectionModel().getSelectedItems();
-		    System.out.println(selChore.get(0).getChoreName());
-		    Main changeScreen=new Main();
-	    	changeScreen.changeScene("fxml/EditChore.fxml");
-	    	EditController ed= new EditController(selChore.get(0));
-	    	ed.setData(selChore.get(0).getChoreName(), selChore.get(0).getIntensity(), selChore.get(0).getHowOften(), selChore.get(0).getStrtDate(), selChore.get(0).getEndDate(),
-	    			selChore.get(0).getAssignTo(),selChore.get(0).getStatus());
-	    	 System.out.println(selChore.get(0));
+	    	selChore= userTable.getSelectionModel().getSelectedItems();
+	    	System.out.println(selChore.get(0).getChoreName());
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/EditChore.fxml"));
+            Parent root = loader.load();
+         
+         EditController raiseQueryController = loader.getController();
+         raiseQueryController.setData(selChore.get(0).getChoreName(), selChore.get(0).getIntensity(), selChore.get(0).getHowOften(), selChore.get(0).getStrtDate().toString(), selChore.get(0).getEndDate().toString(),
+	    			selChore.get(0).getAssignTo(),selChore.get(0).getStatus(),username);
+         
+//         Stage stage = new Stage();
+//         stage.setScene(new Scene(root));
+//         stage.setTitle("Edit Chore");
+//         stage.show();
+         
+         	Main m = new Main();
+	        m.changeStage(root);
 
 	    }
 	   
@@ -87,7 +103,9 @@ public class ViewChoreController {
 	
 	
 	    @FXML
-	    void initialize() {
+	    void initialize(String username) {
+	    	
+	    	this.username = username;
 	       
 	    	chore.setCellValueFactory(new PropertyValueFactory<Chores,String>("choreName"));
 	    	intensity.setCellValueFactory(new PropertyValueFactory<Chores,String>("intensity"));
@@ -106,8 +124,19 @@ public class ViewChoreController {
 	
 	    @FXML
 	    void addChore(MouseEvent event) throws IOException  {
-	    	Main changeScreen=new Main();
-	    	changeScreen.changeScene("fxml/AddChores.fxml");	 	
+//	    	Main changeScreen=new Main();
+//	    	changeScreen.changeScene("fxml/AddChores.fxml");
+	    	
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/AddChores.fxml"));
+	        Parent root = loader.load();
+	       
+	        ChoreController choreController = loader.getController();
+	        choreController.initialize(username);
+	   
+	   
+	        
+	        Main m = new Main();
+	        m.changeStage(root);
 	    }
 	   
 	    @FXML
@@ -125,5 +154,24 @@ public class ViewChoreController {
 	            queryDir.deleteChore(chore);
 	        }
 	    }
+	    
+	    public void goBack() throws IOException {
+			
+			String uName = username;
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Dashboard.fxml"));
+	        Parent root = loader.load();
+	        
+	        DashboardController dashboardController = loader.getController();
+	        dashboardController.displayInfo(uName);
+	        
+	        
+	        Main m = new Main();
+	        
+	        m.changeStage(root);
+	    	
+	    	
+		}
+	    
+	    
 
 	}

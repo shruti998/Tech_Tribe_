@@ -26,7 +26,7 @@ public class ChoresQueryDirectory {
 	   {
 		   int hid=0;
 		   try (Connection connection = DatabaseConnection.Connect()){
-		        String userQuery = "SELECT homeid FROM userTable WHERE fName =? ";
+		        String userQuery = "SELECT homeId FROM userTable WHERE uName =? ";
 		        PreparedStatement groupStatement = connection.prepareStatement(userQuery);
 		        groupStatement.setString(1, UserName);
 		
@@ -51,7 +51,7 @@ public ObservableList<Chores> populateQueryTable(String UserName) {
 		ObservableList<Chores> queryList = FXCollections.observableArrayList();
 		
 		try {
-		    PreparedStatement pst = connection.prepareStatement("select choreName,intensity,howOften,startDate,endDate,assignTo,statusChore from choresdivider where homeId = (SELECT homeid FROM userTable WHERE fName = ?) ");
+		    PreparedStatement pst = connection.prepareStatement("select choreName,intensity,howOften,startDate,endDate,assignTo,statusChore from choresdivider where homeId = (SELECT homeId FROM userTable WHERE uName = ?) ");
 		    pst.setString(1, UserName);
 		    ResultSet resultSet = pst.executeQuery();
 		    hid=getHouseId(UserName);

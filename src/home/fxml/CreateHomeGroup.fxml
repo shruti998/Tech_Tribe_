@@ -45,8 +45,8 @@
                </font>
             </Label>
             <TextArea fx:id="address" layoutX="242.0" layoutY="177.0" prefHeight="82.0" prefWidth="200.0" />
-            <Button layoutX="244.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#viewGroup" prefHeight="26.0" prefWidth="193.0" text="Show  all group" />
             <ChoiceBox fx:id="myChoiceBox" layoutX="239.0" layoutY="131.0" prefWidth="150.0" />
+            <Button fx:id="btnBack" layoutX="41.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="60.0" text="Back" />
          </children>
       </AnchorPane>
    </center>
