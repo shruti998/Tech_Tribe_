@@ -12,30 +12,31 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="670.0" style="-fx-background-color: #fed8a2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.MaintenanceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="670.0" styleClass="root" stylesheets="@../css/MaintenanceCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.MaintenanceController">
    <right>
       <StackPane prefHeight="600.0" prefWidth="672.0" BorderPane.alignment="CENTER">
          <children>
             <TabPane prefHeight="497.0" prefWidth="624.0" style="-fx-background-color: #fed8a2;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab style="-fx-background-color: #fed8a2;" text="Send Notification">
+                <Tab style="-fx-background-color: #f5eeee;" text="Send Notification">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="435.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="435.0" styleClass="root" stylesheets="@../css/MaintenanceCss.css">
                            <children>
-                              <Label alignment="CENTER" layoutX="250.0" layoutY="24.0" prefHeight="35.0" prefWidth="170.0" text="Home Address" textAlignment="JUSTIFY" />
+                              <Label alignment="CENTER" layoutX="250.0" layoutY="24.0" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #f5eeee;" text="Home Address" textAlignment="JUSTIFY" textFill="#171616" />
                               <ComboBox fx:id="cbHomeAddress" layoutX="245.0" layoutY="95.0" prefHeight="26.0" prefWidth="181.0" />
-                              <Label alignment="CENTER" layoutX="251.0" layoutY="168.0" prefHeight="35.0" prefWidth="170.0" text="Maintenance Notification" textAlignment="JUSTIFY" />
+                              <Label alignment="CENTER" layoutX="251.0" layoutY="168.0" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #f5eeee;" text="Maintenance Notification" textAlignment="JUSTIFY" />
                               <TextArea fx:id="txtArNotification" layoutX="172.0" layoutY="236.0" prefHeight="134.0" prefWidth="328.0" />
-                              <Button fx:id="btnSubmit" layoutX="295.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendNotification" prefHeight="41.0" prefWidth="83.0" text="Submit" />
+                              <Button fx:id="btnSubmit" layoutX="295.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendNotification" prefHeight="41.0" prefWidth="83.0" style="-fx-background-color: #ffffff;" text="Submit" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                <Tab style="-fx-background-color: #fed8a2;" text="Resolve Query">
+                <Tab style="-fx-background-color: #f5eeee;" text="Resolve Query">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="464.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="464.0" styleClass="root" stylesheets="@../css/MaintenanceCss.css">
                            <children>
                               <TableView fx:id="tblQuery" layoutX="7.0" layoutY="7.0" onMouseClicked="#getSelected" prefHeight="108.0" prefWidth="653.0">
                                 <columns>
@@ -47,29 +48,37 @@
                                     <TableColumn fx:id="colNote" minWidth="0.0" prefWidth="142.0" text="Note" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="154.0" layoutY="155.0" prefHeight="34.0" prefWidth="100.0" text="Query ID" />
-                              <TextArea fx:id="txtArNote" layoutX="332.0" layoutY="205.0" prefHeight="64.0" prefWidth="200.0" />
-                              <Label layoutX="154.0" layoutY="205.0" prefHeight="34.0" prefWidth="100.0" text="Note" />
-                              <Label layoutX="154.0" layoutY="297.0" prefHeight="34.0" prefWidth="100.0" text="Status" />
-                              <ComboBox fx:id="cbStatus" layoutX="333.0" layoutY="301.0" prefHeight="26.0" prefWidth="198.0" />
-                              <Button fx:id="btnSubmitQuery" layoutX="278.0" layoutY="367.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="41.0" prefWidth="115.0" text="Update Query" />
-                              <TextField fx:id="txtQueryId" editable="false" layoutX="334.0" layoutY="155.0" prefHeight="26.0" prefWidth="196.0" />
+                              <Pane layoutX="155.0" layoutY="135.0" prefHeight="248.0" prefWidth="360.0" style="-fx-background-color: #ffffff; -fx-border-color: #a99076; -fx-border-width: 6;">
+                                 <children>
+                                    <TextField fx:id="txtQueryId" editable="false" layoutX="134.0" layoutY="31.0" prefHeight="26.0" prefWidth="196.0" />
+                                    <ComboBox fx:id="cbStatus" layoutX="134.0" layoutY="190.0" prefHeight="26.0" prefWidth="196.0" />
+                                    <TextArea fx:id="txtArNote" layoutX="134.0" layoutY="92.0" prefHeight="64.0" prefWidth="196.0" />
+                                    <Label layoutX="14.0" layoutY="27.0" prefHeight="34.0" prefWidth="100.0" text="Query ID" />
+                                    <Label layoutX="14.0" layoutY="102.0" prefHeight="34.0" prefWidth="100.0" text="Note" />
+                                    <Label layoutX="14.0" layoutY="186.0" prefHeight="34.0" prefWidth="100.0" text="Status" />
+                                 </children>
+                              </Pane>
+                              <Button fx:id="btnSubmitQuery" layoutX="286.0" layoutY="403.0" mnemonicParsing="false" onAction="#updateQuery" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="Update Query" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab style="-fx-background-color: #fed8a2;" text="Profile">
+                  <Tab style="-fx-background-color: #f5eeee;" text="Profile">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="root" stylesheets="@../css/MaintenanceCss.css">
                            <children>
-                              <Label layoutX="135.0" layoutY="45.0" prefHeight="33.0" prefWidth="105.0" text="User Name" />
-                              <TextField fx:id="txtUserNameP" editable="false" layoutX="299.0" layoutY="49.0" prefHeight="26.0" prefWidth="219.0" />
-                              <Label layoutX="135.0" layoutY="131.0" prefHeight="33.0" prefWidth="105.0" text="Email" />
-                              <Label layoutX="115.0" layoutY="206.0" prefHeight="33.0" prefWidth="105.0" text="New Password" />
-                              <Label layoutX="115.0" layoutY="271.0" prefHeight="33.0" prefWidth="105.0" text="Confirm Password" />
-                              <TextField fx:id="txtEmailP" layoutX="302.0" layoutY="134.0" prefHeight="26.0" prefWidth="214.0" />
-                              <PasswordField fx:id="txtPwdP" layoutX="303.0" layoutY="210.0" prefHeight="26.0" prefWidth="211.0" />
-                              <PasswordField fx:id="txtCnfrmPwdP" layoutX="304.0" layoutY="275.0" prefHeight="26.0" prefWidth="211.0" />
-                              <Button fx:id="btnUpdate" layoutX="279.0" layoutY="370.0" mnemonicParsing="false" onAction="#updateProfile" prefHeight="38.0" prefWidth="90.0" text="Update" />
+                              <Pane layoutX="157.0" layoutY="50.0" prefHeight="286.0" prefWidth="378.0" style="-fx-background-color: #ffffff; -fx-border-color: #a99076; -fx-border-width: 6;">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="28.0" prefHeight="33.0" prefWidth="105.0" text="User Name" />
+                                    <TextField fx:id="txtUserNameP" editable="false" layoutX="145.0" layoutY="28.0" prefHeight="26.0" prefWidth="214.0" />
+                                    <Label layoutX="14.0" layoutY="88.0" prefHeight="33.0" prefWidth="105.0" text="Email" />
+                                    <TextField fx:id="txtEmailP" layoutX="145.0" layoutY="88.0" prefHeight="26.0" prefWidth="214.0" />
+                                    <Label layoutX="14.0" layoutY="148.0" prefHeight="33.0" prefWidth="105.0" text="New Password" />
+                                    <PasswordField fx:id="txtPwdP" layoutX="145.0" layoutY="148.0" prefHeight="26.0" prefWidth="214.0" />
+                                    <Label layoutX="14.0" layoutY="208.0" prefHeight="33.0" prefWidth="105.0" text="Confirm Password" />
+                                    <PasswordField fx:id="txtCnfrmPwdP" layoutX="145.0" layoutY="208.0" prefHeight="26.0" prefWidth="214.0" />
+                                 </children>
+                              </Pane>
+                              <Button fx:id="btnUpdate" layoutX="296.0" layoutY="380.0" mnemonicParsing="false" onAction="#updateProfile" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #ffffff;" text="Update" />
                               <Label fx:id="lblErrorP" layoutX="195.0" layoutY="327.0" prefHeight="17.0" prefWidth="258.0" />
                            </children></AnchorPane>
                     </content>
@@ -82,10 +91,15 @@
    <top>
       <AnchorPane prefHeight="90.0" prefWidth="670.0" style="-fx-background-color: #111111;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnLogout" layoutX="566.0" layoutY="50.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="71.0" text="Logout" />
+            <Button fx:id="btnLogout" layoutX="566.0" layoutY="50.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #ffffff;" text="Logout" />
             <Label layoutX="539.0" layoutY="22.0" prefHeight="17.0" prefWidth="112.0" textFill="#f8f6f6">
                <font>
                   <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="161.0" layoutY="21.0" prefHeight="49.0" prefWidth="309.0" text="PROPERTY MAINTENANCE" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="20.0" />
                </font>
             </Label>
          </children></AnchorPane>

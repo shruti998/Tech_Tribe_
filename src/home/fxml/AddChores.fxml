@@ -9,39 +9,44 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="600.0" style="-fx-background-color: #fed8a2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.ChoreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="670.0" style="-fx-background-color: #fed8a2;" styleClass="root" stylesheets="@../css/ChoresCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.ChoreController">
    <children>
-      <Label layoutX="235.0" layoutY="27.0" text="Add Chores">
+      <Label alignment="CENTER" layoutX="256.0" layoutY="30.0" prefHeight="41.0" prefWidth="162.0" style="-fx-background-color: #ffffff;" text="Add Chores">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="choreName" layoutX="79.0" layoutY="89.0" text="Chore" />
-      <Label layoutX="79.0" layoutY="127.0" text="Intensity" />
-      <Label layoutX="77.0" layoutY="162.0" text="How Often" />
-      <Label layoutX="79.0" layoutY="214.0" text="Start Date" />
-      <Label layoutX="75.0" layoutY="293.0" text="Assign To" />
-      <Label fx:id="lblStatus" layoutX="78.0" layoutY="321.0" text="Status" />
-      <TextField fx:id="txtChore" layoutX="223.0" layoutY="85.0" prefHeight="26.0" prefWidth="186.0" promptText="chores" />
-      <DatePicker fx:id="startDate" layoutX="223.0" layoutY="196.0" />
-      <Label layoutX="77.0" layoutY="247.0" text="End Date" />
-      <DatePicker fx:id="endDate" layoutX="223.0" layoutY="242.0" />
-      <HBox alignment="CENTER_LEFT" layoutX="216.0" layoutY="309.0" prefHeight="41.0" prefWidth="386.0" spacing="20.0">
+      <Pane layoutX="148.0" layoutY="94.0" prefHeight="412.0" prefWidth="375.0" style="-fx-background-color: #ffffff;">
          <children>
-            <RadioButton fx:id="rdImcomplete" lineSpacing="20.0" mnemonicParsing="false" text="Imcomplete" textAlignment="CENTER" textOverrun="CLIP">
-               <toggleGroup>
-                  <ToggleGroup fx:id="changeStatus" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="rdCompleted" mnemonicParsing="false" text="completed" toggleGroup="$changeStatus" />
+            <Label fx:id="choreName" layoutX="20.0" layoutY="47.0" text="Chore" />
+            <Label layoutX="20.0" layoutY="92.0" text="Intensity" />
+            <Label layoutX="20.0" layoutY="137.0" text="How Often" />
+            <Label layoutX="20.0" layoutY="182.0" text="Start Date" />
+            <Label layoutX="20.0" layoutY="272.0" text="Assign To" />
+            <Label fx:id="lblStatus" layoutX="19.0" layoutY="324.0" text="Status" />
+            <TextField fx:id="txtChore" layoutX="170.0" layoutY="42.0" prefHeight="26.0" prefWidth="186.0" promptText="chores" />
+            <DatePicker fx:id="startDate" layoutX="170.0" layoutY="222.0" />
+            <Label layoutX="20.0" layoutY="227.0" text="End Date" />
+            <DatePicker fx:id="endDate" layoutX="170.0" layoutY="177.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="170.0" layoutY="312.0" prefHeight="41.0" prefWidth="206.0" spacing="20.0">
+               <children>
+                  <RadioButton fx:id="rdImcomplete" lineSpacing="20.0" mnemonicParsing="false" text="Imcomplete" textAlignment="CENTER" textOverrun="CLIP">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="changeStatus" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rdCompleted" mnemonicParsing="false" text="completed" toggleGroup="$changeStatus" />
+               </children>
+            </HBox>
+            <ChoiceBox fx:id="myChoiceBox" layoutX="170.0" layoutY="267.0" prefHeight="26.0" prefWidth="186.0" />
+            <ChoiceBox fx:id="menuIntensity" layoutX="170.0" layoutY="87.0" prefHeight="26.0" prefWidth="186.0" />
+            <ChoiceBox fx:id="menuHowOften" layoutX="170.0" layoutY="132.0" prefHeight="26.0" prefWidth="186.0" />
          </children>
-      </HBox>
-      <ChoiceBox fx:id="myChoiceBox" layoutX="223.0" layoutY="280.0" prefHeight="26.0" prefWidth="186.0" />
-      <ChoiceBox fx:id="menuIntensity" layoutX="225.0" layoutY="123.0" prefHeight="26.0" prefWidth="186.0" />
-      <ChoiceBox fx:id="menuHowOften" layoutX="225.0" layoutY="167.0" prefHeight="26.0" prefWidth="186.0" />
-      <Button fx:id="btnSubmit" layoutX="230.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#addChore" prefHeight="26.0" prefWidth="171.0" style="-fx-background-color: black;" text="Submit" textFill="WHITE" />
-      <Button fx:id="btnBack" layoutX="41.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="55.0" text="Back" />
+      </Pane>
+      <Button fx:id="btnSubmit" layoutX="229.0" layoutY="536.0" mnemonicParsing="false" onMouseClicked="#addChore" prefHeight="26.0" prefWidth="171.0" style="-fx-background-color: black;" text="Submit" textFill="WHITE" />
+      <Button fx:id="btnBack" layoutX="571.0" layoutY="20.0" mnemonicParsing="false" onAction="#goBack" prefHeight="41.0" prefWidth="82.0" style="-fx-background-color: #ffffff;" text="Back" />
    </children>
 </AnchorPane>

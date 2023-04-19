@@ -9,36 +9,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fed8a2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.ViewChoreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="670.0" style="-fx-background-color: #fed8a2;" stylesheets="@../css/ChoresCss.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controller.ViewChoreController">
  
    <children>
-      <Label layoutX="224.0" layoutY="29.0" text="Group Name">
+      <Label alignment="CENTER" layoutX="265.0" layoutY="29.0" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Chores">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="userTable" layoutX="10.0" layoutY="71.0" prefHeight="195.0" prefWidth="581.0">
+      <TableView fx:id="userTable" layoutX="4.0" layoutY="247.0" prefHeight="258.0" prefWidth="664.0">
         <columns>
-          <TableColumn fx:id="chore" prefWidth="75.0" text="Chore" />
-          <TableColumn fx:id="intensity" prefWidth="75.0" text="Intensity" />
-            <TableColumn fx:id="howOften" prefWidth="75.0" text="How Often" />
-            <TableColumn fx:id="startDate" prefWidth="75.0" text="Start Date" />
-             <TableColumn fx:id="endDate" prefWidth="75.0" text="End Date" />
-            <TableColumn fx:id="assignTo" prefWidth="75.0" text="Assign To" />
-            <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
+          <TableColumn fx:id="chore" prefWidth="117.0" text="Chore" />
+          <TableColumn fx:id="intensity" prefWidth="67.0" text="Intensity" />
+            <TableColumn fx:id="howOften" prefWidth="81.0" text="How Often" />
+            <TableColumn fx:id="startDate" prefWidth="66.0" text="Start Date" />
+             <TableColumn fx:id="endDate" prefWidth="67.0" text="End Date" />
+            <TableColumn fx:id="assignTo" prefWidth="142.0" text="Assign To" />
+            <TableColumn fx:id="status" prefWidth="122.0" text="Status" />
         </columns>
       </TableView>
-      <HBox layoutX="146.0" layoutY="286.0" prefHeight="100.0" prefWidth="454.0">
+      <HBox layoutX="371.0" layoutY="158.0" prefHeight="72.0" prefWidth="240.0">
          <children>
-            <Button fx:id="btnEdit" mnemonicParsing="false" onMouseClicked="#editData" style="-fx-background-color: black;" text="edit" textFill="#fffdfd">
+            <Button fx:id="btnEdit" mnemonicParsing="false" onMouseClicked="#editData" prefHeight="47.0" prefWidth="106.0" style="-fx-background-color: black;" text="Edit Chores" textFill="#fffdfd">
                <HBox.margin>
                   <Insets left="40.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#delRow" text="del" />
+            <Button mnemonicParsing="false" onMouseClicked="#delRow" prefHeight="47.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="Delete Chores" />
          </children>
       </HBox>
-      <Button fx:id="btnAdd" layoutX="29.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#addChore" style="-fx-background-color: black;" text="Add" textFill="#fffefe" />
-      <Button fx:id="btnBack" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Button fx:id="btnAdd" layoutX="56.0" layoutY="158.0" mnemonicParsing="false" onMouseClicked="#addChore" prefHeight="47.0" prefWidth="106.0" style="-fx-background-color: black;" text="Add Chores" textFill="#fffefe" />
+      <Button fx:id="btnBack" layoutX="554.0" layoutY="16.0" mnemonicParsing="false" onAction="#goBack" prefHeight="47.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="Back" />
    </children>
 </AnchorPane>
