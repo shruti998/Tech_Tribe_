@@ -121,6 +121,7 @@ public class SplitBillCreateGroups {
     	listOfNames.getItems().add(name.getText());
     }
 
+    
     @FXML
     void removeName(MouseEvent event) {
     	int selectedID = listOfNames.getSelectionModel().getSelectedIndex();

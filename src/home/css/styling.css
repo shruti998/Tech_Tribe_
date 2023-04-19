@@ -10,3 +10,6 @@
 {
 -fx-background-color : #73A3EF ;
 }
+.table-row-green {
+    -fx-background-color: #9ACD32; /* set your desired background color here */
+}
