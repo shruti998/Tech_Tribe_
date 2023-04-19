@@ -28,12 +28,12 @@ import javafx.stage.Stage;
 import java.util.*;
 
 public class GroupDetails {
+	public String username;
 	public String groupName;
 	public List<String> members;
 	public List<String> transactions;
 	public List<String> transactionIds;
 	public Map<String, List<Map<String, Double>>> balances;
-	private String userName = "Farida";
 
 	@FXML
 	public Label groupNameLabel;
@@ -228,6 +228,14 @@ public class GroupDetails {
 		this.groupName = groupName;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public void openTransactionWindow(Event event, String transactionId, boolean settle) {
 		Node node = (Node) event.getSource();
 		Stage stage = (Stage) node.getScene().getWindow();
@@ -241,6 +249,7 @@ public class GroupDetails {
 			controller.setGroupName(this.groupName);
 			controller.setTransactionId(transactionId);
 			controller.setSettle(settle);
+			controller.setUserName(username);
 
 			loader.setController(controller);
 
@@ -268,5 +277,29 @@ public class GroupDetails {
 	@FXML
 	public void onSettleTransactionClick(ActionEvent event) {
 		openTransactionWindow(event, null, true);
+	}
+	
+	@FXML
+	public void onBackClick(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        try {
+       	 URL url = new File("src/home/fxml/SplitBillLandingPage.fxml").toURI().toURL();
+      
+       	 FXMLLoader loader = new FXMLLoader(url);
+       	 
+       	 SplitBillCreateGroups controller = new SplitBillCreateGroups();
+       	 controller.setUsername(username);
+       	 
+       	 loader.setController(controller);
+       	 
+       	 Parent root = loader.load();
+       	 Scene scene = new Scene(root);
+       	 stage.setScene(scene);
+       	 stage.show();
+        } catch (IOException e) {
+       	 System.err.println(String.format("Error: %s", e.getMessage()));
+        }
 	}
 }

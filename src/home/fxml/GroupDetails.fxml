@@ -33,6 +33,7 @@
             </Label>
             <ListView fx:id="transactionListView" layoutX="14.0" layoutY="112.0" opacity="0.59" prefHeight="277.0" prefWidth="163.0" />
             <Button layoutX="14.0" layoutY="363.0" mnemonicParsing="false" onAction="#onSelectTransactionClick" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: black;" text="View Transaction" textFill="#efebeb" />
+            <Button defaultButton="true" layoutX="12.0" layoutY="15.0" mnemonicParsing="false" onAction="#onBackClick" style="-fx-background-color: black;" text="Back" textFill="#f2e8e8" />
          </children>
       </AnchorPane>
    </left>

@@ -55,6 +55,7 @@ public class Transaction {
 	public List<String> members;
 
 	class TransactionSplit {
+		public String username;
 		public String splitId;
 		public double amount;
 		public boolean selected;
@@ -404,6 +405,7 @@ public class Transaction {
 
 			GroupDetails controller = new GroupDetails();
 			controller.setGroupName(this.groupName);
+			controller.setUsername(userName);
 
 			loader.setController(controller);
 
@@ -543,5 +545,13 @@ public class Transaction {
 
 	public void setSettle(boolean isSettle) {
 		this.isSettle = isSettle;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

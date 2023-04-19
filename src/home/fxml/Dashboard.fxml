@@ -12,7 +12,7 @@
          <children>
             <Button fx:id="btnGroups" layoutX="60.0" layoutY="52.0" mnemonicParsing="false" onAction="#createGroups" prefHeight="56.0" prefWidth="125.0" text="Create Groups" />
             <Button fx:id="btnMaintenance" layoutX="316.0" layoutY="163.0" mnemonicParsing="false" onAction="#raiseMaintenance" prefHeight="56.0" prefWidth="125.0" text="Raise Maintenance Request" wrapText="true" />
-            <Button fx:id="btnBill" layoutX="70.0" layoutY="163.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="125.0" text="Split Bill" />
+            <Button fx:id="btnBill" layoutX="70.0" layoutY="163.0" mnemonicParsing="false" onAction="#onSplitBillClick" prefHeight="56.0" prefWidth="125.0" text="Split Bill" />
             <Button fx:id="btnChores" layoutX="316.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleChores" prefHeight="56.0" prefWidth="125.0" text="Handle Chores" />
          </children>
       </AnchorPane>

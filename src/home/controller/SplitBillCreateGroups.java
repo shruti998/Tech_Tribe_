@@ -26,10 +26,12 @@ import java.sql.SQLException;
 
 import java.util.*;
 
+import home.Main;
+
 public class SplitBillCreateGroups {
 	private List<String> groupNames;
 	// to be deleted
-	private String  username = "farida";
+	private String  username;
 
     @FXML
     private TextField groupName;
@@ -56,6 +58,7 @@ public class SplitBillCreateGroups {
     
     void getGroupNames() {
     	groupNames = new ArrayList<String>();
+    	System.out.println(username);
 		try (Connection connection = DatabaseConnection.Connect()){
 	        String groupQuery = "SELECT DISTINCT groupName FROM all_groups WHERE memberName = ?";
 	        PreparedStatement groupStatement = connection.prepareStatement(groupQuery);
@@ -103,6 +106,7 @@ public class SplitBillCreateGroups {
        	 
        	 GroupDetails controller = new GroupDetails();
        	 controller.setGroupName(groupName);
+       	 controller.setUsername(username);
        	 
        	 loader.setController(controller);
        	 
@@ -128,31 +132,48 @@ public class SplitBillCreateGroups {
     	listOfNames.getItems().remove(selectedID);
 
     }
-  
+    
     @FXML
-    void viewGroup(MouseEvent event) {         
-         System.out.println("View Group Clicked!");
-         Node node = (Node) event.getSource();
-         Stage stage = (Stage) node.getScene().getWindow();
-         stage.close();
-         try {
-        	 URL url = new File("src/home/fxml/GroupDetails.fxml").toURI().toURL();
-       
-        	 FXMLLoader loader = new FXMLLoader(url);
-        	 
-        	 GroupDetails controller = new GroupDetails();
-        	 controller.setGroupName("dummyGroup");
-        	 
-        	 loader.setController(controller);
-        	 
-        	 Parent root = loader.load();
-        	 Scene scene = new Scene(root);
-        	 stage.setScene(scene);
-        	 stage.show();
-         } catch (IOException e) {
-        	 System.err.println(String.format("Error: %s", e.getMessage()));
-         }
+    public void onBackClick(ActionEvent event) {
+        try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Dashboard.fxml"));
+	        Parent root = loader.load();
+	        
+	        DashboardController dashboardController = loader.getController();
+	        dashboardController.displayInfo(username);
+	        
+	        Main m = new Main();
+	        
+	        m.changeStage(root);
+        } catch (IOException e) {
+       	 	System.err.println(String.format("Error: %s", e.getMessage()));
+        }
     }
+  
+//    @FXML
+//    void viewGroup(MouseEvent event) {         
+//         System.out.println("View Group Clicked!");
+//         Node node = (Node) event.getSource();
+//         Stage stage = (Stage) node.getScene().getWindow();
+//         stage.close();
+//         try {
+//        	 URL url = new File("src/home/fxml/GroupDetails.fxml").toURI().toURL();
+//       
+//        	 FXMLLoader loader = new FXMLLoader(url);
+//        	 
+//        	 GroupDetails controller = new GroupDetails();
+//        	 controller.setGroupName("dummyGroup");
+//        	 
+//        	 loader.setController(controller);
+//        	 
+//        	 Parent root = loader.load();
+//        	 Scene scene = new Scene(root);
+//        	 stage.setScene(scene);
+//        	 stage.show();
+//         } catch (IOException e) {
+//        	 System.err.println(String.format("Error: %s", e.getMessage()));
+//         }
+//    }
     
     @FXML
     void saveData(MouseEvent event) {
@@ -175,6 +196,14 @@ public class SplitBillCreateGroups {
 		    System.out.println(e.getMessage());
 		}
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
  }
 
 
