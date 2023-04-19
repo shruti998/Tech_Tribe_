@@ -1,14 +1,19 @@
 package home.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import home.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class DashboardController {
 	
@@ -95,6 +100,29 @@ public class DashboardController {
         m.changeStage(root);
 		
 		
+	}
+	
+	public void onSplitBillClick(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        try {
+       	 URL url = new File("src/home/fxml/SplitBillLandingPage.fxml").toURI().toURL();
+      
+       	 FXMLLoader loader = new FXMLLoader(url);
+       	 
+       	 SplitBillCreateGroups controller = new SplitBillCreateGroups();
+       	 controller.setUsername(lblUName.getText());
+       	 
+       	 loader.setController(controller);
+       	 
+       	 Parent root = loader.load();
+       	 Scene scene = new Scene(root);
+       	 stage.setScene(scene);
+       	 stage.show();
+        } catch (IOException e) {
+       	 System.err.println(String.format("Error: %s", e.getMessage()));
+        }
 	}
 	
 	public void logOut() throws IOException {
